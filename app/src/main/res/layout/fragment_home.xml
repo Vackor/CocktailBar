@@ -10,7 +10,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="8dp"
-    android:gravity="bottom"
+    android:gravity="top"
     android:background="@color/white"
     android:weightSum="1">
 
@@ -19,7 +19,7 @@
         android:layout_width="377dp"
         android:layout_height="match_parent"
         android:layout_gravity="top"
-        android:gravity="bottom"
+        android:gravity="center"
         android:orientation="vertical"
         android:paddingTop="8dp"
         android:paddingBottom="32dp"
@@ -33,17 +33,17 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="32dp"
             android:textAlignment="center"
             android:textColor="@color/dark_byzantium"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:visibility="visible"/>
 
         <ImageView
             android:id="@+id/random_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@mipmap/home_screen" />
+            android:src="@mipmap/home_screen"/>
 
     </LinearLayout>
 
