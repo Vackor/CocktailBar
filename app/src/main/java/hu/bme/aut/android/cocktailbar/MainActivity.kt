@@ -78,6 +78,10 @@ class MainActivity : AppCompatActivity(), HomeDataHolder {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     private fun loadCocktailData() {
         NetworkManager.getCocktail()?.enqueue(object : Callback<CocktailData?> {
             override fun onResponse(
