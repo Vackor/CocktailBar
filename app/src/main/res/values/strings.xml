@@ -8,6 +8,6 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_search">Search</string>
-    <string name="menu_database">Stock</string>
+    <string name="menu_database">What\'s in stock?</string>
     <string name="menu_to_drink">What should I drink?</string>
 </resources>
