@@ -55,19 +55,27 @@
         </TextView>
 
     </LinearLayout>
-    <TextView
-        android:id="@+id/instructionsEN"
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Hope you will find what you're looking for"
-        android:textSize="15dp"
-        android:textColor="@color/black"
-        android:gravity="center">
-    </TextView>
+        android:layout_marginBottom="8dp" >
+        <TextView
+            android:id="@+id/instructionsEN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Hope you will find what you're looking for"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:gravity="center">
+        </TextView>
+    </ScrollView>
 
 </LinearLayout>

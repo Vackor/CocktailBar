@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.android.cocktailbar.data.Ingredient
+import hu.bme.aut.android.cocktailbar.data.Stock
 import hu.bme.aut.android.cocktailbar.databinding.ItemListBinding
 
 class StockAdapter (private val listener: IngredientClickListener):
@@ -32,12 +33,14 @@ class StockAdapter (private val listener: IngredientClickListener):
 
     fun addItem(item: Ingredient) {
         items.add(item)
+        Stock.setItems(items)
         notifyItemInserted(items.size - 1)
     }
 
     fun update(ingredients: List<Ingredient>) {
         items.clear()
         items.addAll(ingredients)
+        Stock.setItems(items)
         notifyDataSetChanged()
     }
 
@@ -45,6 +48,7 @@ class StockAdapter (private val listener: IngredientClickListener):
 
     fun deleteItem(item: Ingredient, index: Int){
         items.remove(item)
+        Stock.setItems(items)
         notifyItemRemoved(index)
     }
 

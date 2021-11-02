@@ -35,7 +35,7 @@ class DatabaseActivity : AppCompatActivity(), StockAdapter.IngredientClickListen
                 .show(supportFragmentManager, newIngredientDialogFragment.TAG)
         }
 
-        setTitle("Database")
+        setTitle("Stock")
 
         initRecyclerView()
     }
@@ -50,7 +50,6 @@ class DatabaseActivity : AppCompatActivity(), StockAdapter.IngredientClickListen
     private fun loadItemsInBackground() {
         thread {
             val items = database.ingredientDao().getAll()
-            Stock.setItems(items)
             runOnUiThread {
                 adapter.update(items)
             }
@@ -85,5 +84,6 @@ class DatabaseActivity : AppCompatActivity(), StockAdapter.IngredientClickListen
             Log.d("MainActivity", "Ingredient delete was successful")
         }
     }
+
 }
 

@@ -17,6 +17,10 @@ class DatabaseFragment : Fragment() {
 
     private lateinit var databaseViewModel: DatabaseViewModel
     private var _binding: FragmentDatabaseBinding? = null
+    companion object {
+        @JvmStatic
+        var mTextView: TextView? = null
+    }
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -41,9 +45,9 @@ class DatabaseFragment : Fragment() {
                     stock += item.name + "\n"
             }
         }
-        val textView: TextView = binding.textDatabase
+        mTextView = binding.textDatabase
         databaseViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = stock
+            mTextView!!.text = stock
         })
 
         binding.editButton.setOnClickListener {
