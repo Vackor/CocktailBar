@@ -10,4 +10,14 @@ interface HomeAPI {
     @GET("random.php?")
     fun getRandom(
     ): Call<CocktailData?>?
+
+    @GET("search.php?")
+    fun getCocktailResults(
+        @Query("s") cocktailName: String
+    ): Call<CocktailData?>?
+
+    @GET("filter.php?")
+    fun getIngredientResults(
+        @Query("i") ingredientName: String
+    ): Call<CocktailData?>?
 }

@@ -11,6 +11,9 @@ object NetworkManager {
     private val retrofit: Retrofit
     private val homeApi: HomeAPI
     private var currentCocktails: CocktailData? = null
+    public var cocktail: Boolean = true
+    public var clickedIndex = 0
+    public var size = 0
 
     private const val SERVICE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
 
@@ -25,6 +28,14 @@ object NetworkManager {
 
     fun getCocktail(): Call<CocktailData?>? {
         return homeApi.getRandom()
+    }
+
+    fun getCocktailResults(name: String): Call<CocktailData?>? {
+        return homeApi.getCocktailResults(name)
+    }
+
+    fun getIngredientResults(name: String): Call<CocktailData?>? {
+        return homeApi.getIngredientResults(name)
     }
 
     fun getCurrentCocktails(): CocktailData?{

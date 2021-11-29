@@ -23,6 +23,8 @@ class HomeFragment : Fragment(){
 
     private val binding get() = _binding!!
 
+    private var first = true
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -53,10 +55,12 @@ class HomeFragment : Fragment(){
 
         binding.randomFrame.setOnClickListener {
             if (binding.randomName.text != "Try something new today!") {
+                NetworkManager.clickedIndex = 0
                 var dialog = DetailsFragment()
                 fragmentManager?.let {it1 -> DetailsFragment().show(it1, DetailsFragment.TAG)}
             }
         }
+        first = false
 
         return root
     }

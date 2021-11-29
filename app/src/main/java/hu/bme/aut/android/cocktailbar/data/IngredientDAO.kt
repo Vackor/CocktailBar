@@ -8,11 +8,11 @@ interface IngredientDAO {
     fun getAll(): List<Ingredient>
 
     @Insert
-    fun insert(shoppingItems: Ingredient): Long
+    fun insert(ingredient: Ingredient): Long
 
     @Update
-    fun update(shoppingItem: Ingredient)
+    fun update(ingredient: Ingredient)
 
     @Delete
-    fun deleteItem(shoppingItem: Ingredient)
+    fun deleteItem(ingredient: Ingredient)
 }

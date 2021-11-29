@@ -4,19 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.search.SearchFragment">
+    tools:context=".ui.search.SearchFragment"
+    android:background="@drawable/background">
 
-    <TextView
+    <LinearLayout
         android:id="@+id/text_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        android:weightSum="2">
+        <Button
+            android:id="@+id/search_by_cocktail"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Cocktail"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/powder_blue"
+            android:textColor="@color/dark_byzantium">
+        </Button>
+        <Button
+            android:id="@+id/search_by_ingredient"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Ingredient"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/powder_blue"
+            android:textColor="@color/dark_byzantium">
+        </Button>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

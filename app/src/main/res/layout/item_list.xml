@@ -10,12 +10,12 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="8dp"
-    android:weightSum="1"
+    android:weightSum="6"
     android:layout_gravity="start">
 
     <TextView
         android:id="@+id/ingredient_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:text="sample"
         android:textSize="20dp"
@@ -25,7 +25,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:layout_gravity="center_vertical"
-        android:layout_weight="1"/>
+        android:layout_weight="5"/>
 
     <CheckBox
         android:id="@+id/inStock"
@@ -34,9 +34,10 @@
         android:layout_gravity="center_vertical"
         android:layout_marginEnd="20dp"
         android:text="In stock"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textColor="@color/mountbatten_pink"
         android:buttonTint="@color/mountbatten_pink"
+        android:layout_weight="1"
         />
 
     <ImageButton
@@ -47,7 +48,6 @@
         android:layout_gravity="center_vertical"
         android:scaleType="fitXY"
         android:src="@drawable/delete"
-        app:tint="@color/mountbatten_pink"
-        android:layout_weight="1" />
+        app:tint="@color/mountbatten_pink" />
 
 </LinearLayout>

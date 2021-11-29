@@ -84,6 +84,5 @@ class DatabaseActivity : AppCompatActivity(), StockAdapter.IngredientClickListen
             Log.d("MainActivity", "Ingredient delete was successful")
         }
     }
-
 }
 

@@ -63,7 +63,6 @@ class MainActivity : AppCompatActivity(), HomeDataHolder {
                 R.id.nav_home, R.id.nav_search, R.id.nav_database/*, R.id.nav_to_drink*/
             ), drawerLayout
         )
-
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }

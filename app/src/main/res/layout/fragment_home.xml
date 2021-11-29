@@ -11,13 +11,13 @@
     android:paddingRight="16dp"
     android:paddingTop="8dp"
     android:gravity="top"
-    android:background="@color/white"
+    android:background="@drawable/background"
     android:weightSum="1">
 
     <LinearLayout
         android:id="@+id/random_frame"
         android:layout_width="377dp"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_gravity="top"
         android:gravity="center"
         android:orientation="vertical"
@@ -42,8 +42,7 @@
         <ImageView
             android:id="@+id/random_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/home_screen"/>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
@@ -53,6 +52,6 @@
         android:layout_height="60dp"
         android:gravity="center"
         android:text="Random"
-        android:textSize="15dp" />
+        android:textSize="15sp" />
 
 </LinearLayout>
