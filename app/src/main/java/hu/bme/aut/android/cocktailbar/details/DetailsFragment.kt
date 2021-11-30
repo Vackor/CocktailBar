@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import hu.bme.aut.android.cocktailbar.databinding.FragmentDetailsBinding
 import hu.bme.aut.android.cocktailbar.model.CocktailData
 import hu.bme.aut.android.cocktailbar.network.NetworkManager
@@ -30,6 +32,11 @@ class DetailsFragment: DialogFragment(){
         cocktail = NetworkManager.getCurrentCocktails()
         if (cocktail?.drinks?.get(index)?.strDrink.toString() != "null"){
             binding.name.text = cocktail?.drinks?.get(index)?.strDrink.toString()
+            var pic = cocktail?.drinks?.get(index)?.strDrinkThumb
+            Glide.with(this)
+                    .load(pic)
+                    .transition(DrawableTransitionOptions().crossFade())
+                    .into(binding.clickedImage)
             setIngredients()
             binding.ingredient.text = ingredients
             binding.measure.text = measure

@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import hu.bme.aut.android.cocktailbar.adapter.ResultAdapter
-import hu.bme.aut.android.cocktailbar.data.ResultDatabase
 import hu.bme.aut.android.cocktailbar.data.ResultItem
 import hu.bme.aut.android.cocktailbar.databinding.ActivitySearchBinding
 import hu.bme.aut.android.cocktailbar.details.DetailsFragment
@@ -18,12 +16,10 @@ import hu.bme.aut.android.cocktailbar.ui.home.HomeDataHolder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.concurrent.thread
 
 class SearchActivity : AppCompatActivity(), ResultAdapter.ResultItemClickListener,
     HomeDataHolder {
     private lateinit var binding: ActivitySearchBinding
-    private lateinit var database: ResultDatabase
     private lateinit var adapter: ResultAdapter
     private var cocktailData: CocktailData? = null
     private var homeDataHolder: HomeDataHolder? = null
@@ -35,8 +31,6 @@ class SearchActivity : AppCompatActivity(), ResultAdapter.ResultItemClickListene
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        database = ResultDatabase.getDatabase(applicationContext)
 
         setTitle("Search")
         initRecyclerView()
@@ -58,31 +52,11 @@ class SearchActivity : AppCompatActivity(), ResultAdapter.ResultItemClickListene
         }
 
         adapter.nukeTable()
-        var no = homeDataHolder?.getCocktailData()?.drinks?.size
-
-        if (no != null && no != 0) {
-            for (i in 0..no) {
-                if (results?.get(i) != null) {
-                    val tmp = results?.get(i)!!
-                    database.resultItemDao().deleteItem(tmp)
-                }
-            }
-        }
     }
 
     override fun onPause() {
         super.onPause()
         adapter.nukeTable()
-        var no = homeDataHolder?.getCocktailData()?.drinks?.size
-
-        if (no != null && no != 0) {
-            for (i in 0..no) {
-                if (results?.get(i) != null) {
-                    val tmp = results?.get(i)!!
-                    database.resultItemDao().deleteItem(tmp)
-                }
-            }
-        }
     }
 
     private fun initRecyclerView() {
@@ -92,6 +66,14 @@ class SearchActivity : AppCompatActivity(), ResultAdapter.ResultItemClickListene
     }
 
     override fun onItemClicked(item: ResultItem) {
+        var no = homeDataHolder?.getCocktailData()?.drinks?.size!!
+        var cocktails: CocktailData? = NetworkManager.getCurrentCocktails()
+        for (i in 0..no){
+            if (cocktails?.drinks?.get(i)?.strDrink.toString() == item.name){
+                NetworkManager.clickedIndex = i
+                break
+            }
+        }
         if (NetworkManager.cocktail)
         DetailsFragment().show(supportFragmentManager, DetailsFragment.TAG)
         // Az API hozzávaló alapján történő kereséskor csak a nevét adja vissza a koktélnak és nem
@@ -167,25 +149,12 @@ class SearchActivity : AppCompatActivity(), ResultAdapter.ResultItemClickListene
         var no = homeDataHolder?.getCocktailData()?.drinks?.size
 
         if (no != null && no > 0){
-            NetworkManager.size = no
-            for (i in 0..no - 1){
-                if (results?.get(i) != null) {
-                    val tmp = results?.get(i)!!
-                    database.resultItemDao().deleteItem(tmp)
-                }
-            }
             for (i in 0..no - 1){
                 val newItemName = homeDataHolder?.getCocktailData()?.drinks?.get(i)?.strDrink
                 if (newItemName != null) {
                     val resultItem = ResultItem(name = newItemName)
                     results?.add(resultItem)
-                    thread {
-                        val insertId = database.resultItemDao().insert(resultItem)
-                        resultItem.id = insertId
-                        runOnUiThread {
-                            adapter.addItem(resultItem)
-                        }
-                    }
+                    adapter.addItem(resultItem)
                 }
             }
         }

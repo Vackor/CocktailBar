@@ -14,6 +14,7 @@ object NetworkManager {
     public var cocktail: Boolean = true
     public var clickedIndex = 0
     public var size = 0
+    public var clickedName = ""
 
     private const val SERVICE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
 

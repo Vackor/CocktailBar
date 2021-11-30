@@ -1,18 +1,11 @@
 package hu.bme.aut.android.cocktailbar.adapter
 
-import android.app.Activity
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import hu.bme.aut.android.cocktailbar.SearchActivity
-import hu.bme.aut.android.cocktailbar.data.ResultDatabase
 import hu.bme.aut.android.cocktailbar.data.ResultItem
-import hu.bme.aut.android.cocktailbar.data.Stock
 import hu.bme.aut.android.cocktailbar.databinding.ItemResultListBinding
-import hu.bme.aut.android.cocktailbar.details.DetailsFragment
 import hu.bme.aut.android.cocktailbar.network.NetworkManager
-import kotlin.concurrent.thread
 
 class ResultAdapter (private val listener: ResultItemClickListener) :
     RecyclerView.Adapter<ResultAdapter.ResultViewHolder>() {
@@ -27,8 +20,8 @@ class ResultAdapter (private val listener: ResultItemClickListener) :
         holder.binding.tvName.text = resultItem.name
 
         holder.binding.tvName.setOnClickListener {
-            NetworkManager.clickedIndex = position
             val resultItem = items[position]
+            NetworkManager.clickedName = items[position].name
             listener.onItemClicked(resultItem)
         }
     }
