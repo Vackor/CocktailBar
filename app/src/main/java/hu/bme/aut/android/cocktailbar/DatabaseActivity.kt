@@ -73,12 +73,12 @@ class DatabaseActivity : AppCompatActivity(), StockAdapter.IngredientClickListen
         }
     }
 
-    override fun onItemDeleted(item: Ingredient, index: Int) {
+    override fun onItemDeleted(item: Ingredient) {
         thread {
             database.ingredientDao().deleteItem(item)
 
             runOnUiThread {
-                adapter.deleteItem(item, index)
+                adapter.deleteItem(item)
             }
 
             Log.d("MainActivity", "Ingredient delete was successful")

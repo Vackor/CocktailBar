@@ -27,7 +27,7 @@ class StockAdapter (private val listener: IngredientClickListener):
         }
 
         holder.binding.removeIngredient.setOnClickListener {
-            listener.onItemDeleted(ingredient, position)
+            listener.onItemDeleted(ingredient)
         }
     }
 
@@ -46,7 +46,7 @@ class StockAdapter (private val listener: IngredientClickListener):
 
     override fun getItemCount(): Int = items.size
 
-    fun deleteItem(item: Ingredient, index: Int){
+    fun deleteItem(item: Ingredient){
         items.remove(item)
         Stock.setItems(items)
         notifyDataSetChanged()
@@ -54,7 +54,7 @@ class StockAdapter (private val listener: IngredientClickListener):
 
     interface IngredientClickListener {
         fun onItemChanged(item: Ingredient)
-        fun onItemDeleted(item: Ingredient, index: Int)
+        fun onItemDeleted(item: Ingredient)
     }
 
     inner class IngredientViewHolder(val binding: ItemListBinding) :
