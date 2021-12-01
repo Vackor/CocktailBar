@@ -10,7 +10,7 @@ import hu.bme.aut.android.cocktailbar.databinding.ItemListBinding
 class StockAdapter (private val listener: IngredientClickListener):
     RecyclerView.Adapter<StockAdapter.IngredientViewHolder>() {
 
-    private val items = mutableListOf<Ingredient>()
+    private var items = mutableListOf<Ingredient>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = IngredientViewHolder(
         ItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
@@ -49,7 +49,7 @@ class StockAdapter (private val listener: IngredientClickListener):
     fun deleteItem(item: Ingredient, index: Int){
         items.remove(item)
         Stock.setItems(items)
-        notifyItemRemoved(index)
+        notifyDataSetChanged()
     }
 
     interface IngredientClickListener {
@@ -59,5 +59,4 @@ class StockAdapter (private val listener: IngredientClickListener):
 
     inner class IngredientViewHolder(val binding: ItemListBinding) :
         RecyclerView.ViewHolder(binding.root)
-
 }
