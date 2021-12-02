@@ -1,5 +1,6 @@
 package hu.bme.aut.android.cocktailbar
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -27,12 +28,13 @@ class SearchActivity : AppCompatActivity(), ResultAdapter.ResultItemClickListene
     private var results: MutableList<ResultItem?>? = null
 
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setTitle("Search")
+        binding.toolbar.title = "Search"
         initRecyclerView()
 
         binding.searchButton.setOnClickListener {
