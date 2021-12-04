@@ -35,8 +35,6 @@ class DatabaseActivity : AppCompatActivity(), StockAdapter.IngredientClickListen
                 .show(supportFragmentManager, newIngredientDialogFragment.TAG)
         }
 
-        setTitle("Stock")
-
         initRecyclerView()
     }
 

@@ -33,8 +33,6 @@ class SearchActivity : AppCompatActivity(), ResultAdapter.ResultItemClickListene
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.toolbar.title = "Search"
         initRecyclerView()
 
         binding.searchButton.setOnClickListener {
